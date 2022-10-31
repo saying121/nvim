@@ -1,25 +1,27 @@
 local packer=require("packer")
 packer.startup({
     function(use)
-        use 'wbthomason/packer.nvim'
-        use 'voldikss/vim-translator'
-        use 'tpope/vim-surround'
-        use {'nvim-treesitter/nvim-treesitter',run=':TSUpdate'}
-        use 'lukas-reineke/indent-blankline.nvim'
-        use 'glepnir/dashboard-nvim'
-        --依赖 apt install ripgrep
-        use 'ahmedkhalf/project.nvim'       --开屏
-        use
-        {
-            'nvim-telescope/telescope.nvim',
-            tag= '0.1.0',
-            require=
-            {
-                'nvim-lua/plenary.nvim'
-            }
+        use {
+            "LintaoAmons/scratch.nvim",
+            tag = "v0.2.0" -- use tag for stability, or without this to have latest fixed and functions
         }
-        use 'tpope/vim-commentary'     --快速注释
-        use 'kien/rainbow_parentheses.vim'    --括号颜色
+        use 'mfussenegger/nvim-dap'
+        use 'ravenxrz/DAPInstall.nvim'
+        use 'rcarriga/nvim-dap-ui'         --左边
+        use 'theHamsta/nvim-dap-virtual-text'
+        use {
+            'nvim-tree/nvim-tree.lua',
+            requires = {
+                'nvim-tree/nvim-web-devicons', -- optional, for file icons
+            },
+            tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        }
+        --依赖 apt install ripgrep
+        use 'ahmedkhalf/project.nvim'
+        use {
+            'nvim-telescope/telescope.nvim', tag= '0.1.0',
+        }
+        use 'nvim-lua/plenary.nvim'
         use {
             'neoclide/coc.nvim',
             branch = 'master',
@@ -27,17 +29,26 @@ packer.startup({
         }
         use 'wookayin/vim-autoimport'     --导入包
         use 'lfv89/vim-interestingwords'
-        use
-        {
+        use {
             'fisadev/vim-isort', ft={'py'}
         }
-
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            run=':TSUpdate'
+        }
+        use 'itchyny/vim-cursorword'
+        use 'lukas-reineke/indent-blankline.nvim'
+        use 'glepnir/dashboard-nvim'
+        use 'voldikss/vim-translator'
+        use {
+            "EdenEast/nightfox.nvim",
+            run=":NightfoxCompile",
+        }
         use 'folke/tokyonight.nvim'
         use 'xiyaowong/nvim-transparent'
-        use 'mfussenegger/nvim-dap'
-        use 'ravenxrz/DAPInstall.nvim'
-        use 'rcarriga/nvim-dap-ui'         --左边
-        use 'theHamsta/nvim-dap-virtual-text'
+        use 'tpope/vim-commentary'     --快速注释
+        use 'tpope/vim-surround'
+        use 'wbthomason/packer.nvim'
     end,
 config={
     profile={

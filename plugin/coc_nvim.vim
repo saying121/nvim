@@ -2,10 +2,8 @@ func! CocInstal()
     exec '!apt install -y nodejs clangd'
     exec '!npm install npm -g -y'
     exec '!npm install -g -y yarn'
-    exec '!cd $HOME/.local/share/nvim/site/pack/packer/start/coc.nvim | yarn install '
+    exec '!cd $HOME/.local/share/nvim/site/pack/packer/start/coc.nvim && yarn install '
 endfunc
-
-" nvm install v(version)直接写nodejs版本号
 " 到coc.nvim目录yarn install || yarn build
 
 let g:coc_global_extensions=[
@@ -16,7 +14,6 @@ let g:coc_global_extensions=[
             \'coc-pyright',
             \'coc-marketplace',
             \'coc-actions',
-            \'coc-explorer',
             \'coc-css',
             \'coc-json']
 set hidden
@@ -37,27 +34,24 @@ nmap <silent>gy <Plug>(coc-type-definition)
 nmap <silent>gi <Plug>(coc-implementation)
 "引用位置
 nmap <silent>gr <Plug>(coc-references)
-"文件管理器
-nmap <leader>e <Cmd>CocCommand explorer<CR>
 
-"同词高亮
-autocmd CursorHold * silent call CocActionAsync('highlight')
 ""选中更改
 "xmap <CR> <Plug>(coc-codeaction)
 " nmap <M-CR> <Plug>(coc-codeaction)
+
 "集成statusline
 function! StatusDiagnostic() abort
-	  let info = get(b:, 'coc_diagnostic_info', {})
-	  if empty(info) | return '' | endif
-	  let msgs = []
-	  if get(info, 'error', 0)
-	    call add(msgs, 'E' . info['error'])
-	  endif
-	  if get(info, 'warning', 0)
-	    call add(msgs, 'W' . info['warning'])
-	  endif
-	  return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
-	endfunction
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    let msgs = []
+    if get(info, 'error', 0)
+        call add(msgs, 'E' . info['error'])
+    endif
+    if get(info, 'warning', 0)
+        call add(msgs, 'W' . info['warning'])
+    endif
+    return join(msgs, ' ') . ' ' . get(g:, 'coc_status', '')
+endfunction
 " 大写k显示帮助文档
 nnoremap <silent> K :call ShowDocumentation()<CR>
 

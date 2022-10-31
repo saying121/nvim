@@ -1,14 +1,9 @@
+"
+nnoremap <leader>e :NvimTreeToggle<CR>
+
 " 自动导入包ALT enter
 nmap<silent> <M-CR>   :ImportSymbol<CR>
 imap <silent> <M-CR>   <Esc>:ImportSymbol<CR>a
-
-"括号颜色
-augroup spam
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-augroup END
 
 " Telescope 设置
 func! TeleRely()

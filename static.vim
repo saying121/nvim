@@ -56,6 +56,14 @@ endfunc
 
 let g:indentLine_fileTypeExclude = ['dashboard']
 
+" 代码折叠
+function FoldConfig()
+    set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+endfunction
+
+autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()
+
 "基本设置
 " 出现CONVERSION ERROR就输入指令:w ++enc=utf-8 强制转码
 let mapleader=";"
@@ -65,6 +73,7 @@ set history=100
 set mouse=a            "鼠标可用
 
 "显示设置
+set termguicolors
 set listchars=eol:
 set number            "显示行号
 set relativenumber
@@ -77,13 +86,14 @@ set showmatch        "高亮显示匹配括号
 "自动删除行末空格
 augroup blank
     autocmd!
-    autocmd BufWrite *.c    :%s/\s\+$//e
-    autocmd BufWrite *.cpp  :%s/\s\+$//e
-    autocmd BufWrite *.java :%s/\s\+$//e
-    autocmd BufWrite *.py   :%s/\s\+$//e
-    autocmd BufWrite *.sh   :%s/\s\+$//e
-    autocmd BufWrite *.vim  :%s/\s\+$//e
-    autocmd BufWrite *.lua  :%s/\s\+$//e
+    autocmd BufWrite * :%s/\s\+$//e
+    " autocmd BufWrite *.c    :%s/\s\+$//e
+    " autocmd BufWrite *.cpp  :%s/\s\+$//e
+    " autocmd BufWrite *.java :%s/\s\+$//e
+    " autocmd BufWrite *.py   :%s/\s\+$//e
+    " autocmd BufWrite *.sh   :%s/\s\+$//e
+    " autocmd BufWrite *.vim  :%s/\s\+$//e
+    " autocmd BufWrite *.lua  :%s/\s\+$//e
 augroup END
 
 "自动创建代码块

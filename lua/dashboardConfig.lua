@@ -31,7 +31,7 @@ db.custom_center = {
     {icon = '  ', desc = 'Recently opened files       ', shortcut = '', action = 'Telescope oldfiles'},
     {icon = '  ', desc = 'Find File                   ', shortcut = '', action = 'Telescope find_files find_command=rg,--hidden,--files'},
     {icon = '  ', desc = 'Find Word                   ', shortcut = '', action = 'Telescope live_grep'},
-    {icon = '  ', desc = 'File Browser                ', shortcut = '', action = 'CocCommand explorer'},
+    {icon = '  ', desc = 'File Browser                ', shortcut = '', action = 'NvimTreeToggle'},
     {icon = '  ', desc = 'Edit $MYVIMRC               ', shortcut = '', action = ':e $MYVIMRC'},
     {icon = '  ', desc = 'exit                        ', shortcut = '', action = 'q'}
 }
