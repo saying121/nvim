@@ -68,7 +68,8 @@ require("indent_blankline").setup {
     --     "IndentBlanklineIndent6",
     -- },
 }
-
+-- 分割线
+-- require('colorful-winsep').setup({ })
 -- 透明
 require("transparent").setup({
     enable = true, -- boolean: enable transparent

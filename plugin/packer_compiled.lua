@@ -79,10 +79,21 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/DAPInstall.nvim",
     url = "https://github.com/ravenxrz/DAPInstall.nvim"
   },
+  ["aerial.nvim"] = {
+    config = { "\27LJ\2\0024\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0" },
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/aerial.nvim",
+    url = "https://github.com/stevearc/aerial.nvim"
+  },
   ["coc.nvim"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
+  },
+  ["colorful-winsep.nvim"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/colorful-winsep.nvim",
+    url = "https://github.com/nvim-zh/colorful-winsep.nvim"
   },
   ["dashboard-nvim"] = {
     loaded = true,
@@ -154,6 +165,11 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/scratch.nvim",
     url = "https://github.com/LintaoAmons/scratch.nvim"
   },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/telescope.nvim",
@@ -204,11 +220,15 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: aerial.nvim
+time([[Config for aerial.nvim]], true)
+try_loadstring("\27LJ\2\0024\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
+time([[Config for aerial.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType py ++once lua require("packer.load")({'vim-isort'}, { ft = "py" }, _G.packer_plugins)]]
+vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-isort'}, { ft = "python" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
 vim.cmd("augroup END")
 

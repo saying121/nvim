@@ -34,7 +34,8 @@ packer.startup({
         }
         use 'wookayin/vim-autoimport'     --导入包
         use 'lfv89/vim-interestingwords'
-        use {
+        use
+        {
             'fisadev/vim-isort',
             ft={'python'}
         }

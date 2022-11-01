@@ -1,31 +1,3 @@
-func! VimSet()
-    if(has("win32") || has("win64") || has("win95") || has("win16"))
-        if empty(glob('E:/programs/vim/vimfiles/autoload/plug.vim'))
-            silent !iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |` ni
-                        \E:/programs/vim/vimfiles/autoload/plug.vim -Force
-            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        else
-            exec 'PlugInstall | PlugUpdate | PlugUpgrade | PlugClean'
-        endif
-    elseif has('unix')
-        if empty(glob('~/.vim/autoload/plug.vim'))
-            silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                        \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        else
-            exec 'PlugInstall | PlugUpdate | PlugUpgrade | PlugClean'
-        endif
-    elseif has('mac')
-        if empty(glob('~/.vim/autoload/plug.vim'))
-            silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-                        \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-        else
-            exec 'PlugInstall | PlugUpdate | PlugUpgrade | PlugClean'
-        endif
-    endif
-endfunc
-
 func! NvimSet()
     if(has("win32") || has("win64") || has("win95") || has("win16"))
         if empty(glob('$HOME\\AppData\\Local\\nvim'))
@@ -55,14 +27,6 @@ func! NvimSet()
 endfunc
 
 let g:indentLine_fileTypeExclude = ['dashboard']
-
-" 代码折叠
-function FoldConfig()
-    set foldmethod=expr
-    set foldexpr=nvim_treesitter#foldexpr()
-endfunction
-
-autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()
 
 "基本设置
 " 出现CONVERSION ERROR就输入指令:w ++enc=utf-8 强制转码
@@ -385,10 +349,6 @@ nnoremap <M-=> <C-W>+
 "Alt+t开启关闭终端,vim和nvim不太一样
 nnoremap <M-t> :ter<CR>A
 tnoremap <M-t> exit<CR>
-"空格向下翻Tab向上翻
-nnoremap <space> <C-e>
-nnoremap <Tab> <C-y>
-vnoremap <space> <C-e>
-vnoremap <Tab> <C-y>
 
 nnoremap <silent><BackSpace> :noh<CR>
+nnoremap <space>s :source $MYVIMRC<CR>
