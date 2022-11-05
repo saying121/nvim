@@ -143,7 +143,7 @@ endfunction
 set laststatus=2                            "显示状态栏信息
 set statusline=%6*\%{StatuslineGit()}\
 set statusline+=%1*\%<%.50F\                    "显示文件名和文件路径 (%<应该可以去掉)
-set statusline+=%7*\%{StatusDiagnostic()}\
+" set statusline+=%7*\%{StatusDiagnostic()}\
 set statusline+=%=%2*\%y%m%r%h%w\ %*        "显示文件类型及文件状态
 set statusline+=%3*\%{&ff}\[%{&fenc}]\ %*   "显示文件编码类型
 set statusline+=%4*\ row:%l/%L,col:%c\ %*   "显示光标所在行和列
@@ -153,7 +153,7 @@ hi User6 guifg=Olivedrab
 " hi User1 cterm=none ctermfg=25 "ctermbg=0
 hi User1 guifg=blue
 " hi User7 cterm=none ctermfg=45 "ctermbg=0
-hi User7 guifg=red
+" hi User7 guifg=red
 " hi User2 cterm=none ctermfg=208 "ctermbg=0
 hi User2 guifg=Turquoise
 " hi User3 cterm=none ctermfg=169 "ctermbg=0
@@ -339,6 +339,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+tnoremap <Esc> <C-\><C-n>
 
 "alt映射方法,insert模式按CTRL+v出现^然后按下alt+key,<M-key>
 nnoremap <M-,> <C-W><

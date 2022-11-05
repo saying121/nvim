@@ -12,7 +12,10 @@ packer.startup({
         use 'mfussenegger/nvim-dap'
         use 'ravenxrz/DAPInstall.nvim'
         use 'rcarriga/nvim-dap-ui'         --左边
+
+        use 'adelarsq/image_preview.nvim'
         use 'theHamsta/nvim-dap-virtual-text'
+        use 'voldikss/vim-floaterm'
         use {
             'nvim-tree/nvim-tree.lua',
             requires = {
@@ -20,18 +23,31 @@ packer.startup({
             },
             tag = 'nightly' -- optional, updated every week. (see issue #1193)
         }
-        --依赖 apt install ripgrep
+        use 'nvim-telescope/telescope-media-files.nvim'
         use 'nvim-telescope/telescope-file-browser.nvim'
         use 'ahmedkhalf/project.nvim'
         use {
             'nvim-telescope/telescope.nvim', tag= '0.1.0',
+            --依赖 apt install ripgrep
         }
+        use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
-        use {
-            'neoclide/coc.nvim',
-            branch = 'master',
-            run = 'yarn install --frozen-lockfile'
-        }
+        use 'neovim/nvim-lspconfig'
+        use 'williamboman/nvim-lsp-installer'
+        use 'hrsh7th/nvim-cmp'
+        use 'hrsh7th/cmp-cmdline'
+        use 'hrsh7th/cmp-nvim-lsp'
+        use 'hrsh7th/cmp-buffer'
+        use 'hrsh7th/cmp-path'
+
+        use 'f3fora/cmp-spell'
+        use 'rafamadriz/friendly-snippets'
+        -- use 'hrsh7th/cmp-vsnip'
+        use 'hrsh7th/vim-vsnip'
+        -- use {
+        --     'neoclide/coc.nvim',
+        --     branch = 'release'
+        -- }
         use 'wookayin/vim-autoimport'     --导入包
         use 'lfv89/vim-interestingwords'
         use {
