@@ -1,18 +1,19 @@
-require'nvim-treesitter.configs'.setup {
-    ensure_installed={ "c","python","java","lua","bash","html","javascript","json","sql","vim"},
-    sync_install=true,
-    auto_install=true,
-    incremental_selection={
-        enable=true,
-        keymaps={
-            init_selection="<CR>",
-            node_incremental="<CR>",
-            scope_incremental="<BS>",
-            node_decremental="<leader>rm"
+require 'nvim-treesitter.configs'.setup {
+    ensure_installed = { "bash", "c", "java", "javascript", "json", "html", "lua", "python", "sql", "vim" },
+    sync_install = true,
+    auto_install = true,
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "<CR>",
+            node_incremental = "<CR>",
+            scope_incremental = "<BS>",
+            node_decremental = "<leader>rm"
         }
     },
-    indent={
-        enable=true
+    indent = {
+        -- enable = true
+        enable = false
     },
     highlight = {
         enable = true,

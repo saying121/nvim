@@ -32,8 +32,9 @@ cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            require('luasnip').filetype_extend("ruby",{ "rails" }) --For friendly-snippets
             -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
             -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
         end,
@@ -69,13 +70,13 @@ cmp.setup({
     }),
     sources = cmp.config.sources {
         { name = 'nvim_lsp' },
-        { name = 'vsnip' }, -- For vsnip users.
+        { name = 'buffer' },
+        { name = 'luasnip' }, -- For luasnip users.
         { name = 'spell' },
         { name = 'path' },
-        -- { name = 'luasnip' }, -- For luasnip users.
+        -- { name = 'vsnip' }, -- For vsnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.
         -- { name = 'snippy' }, -- For snippy users.
-        { name = 'buffer' },
     },
     experimental = {
         ghost_text = true
@@ -108,46 +109,6 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
-
--- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
--- The following example advertise capabilities to `clangd`.
-require 'lspconfig'.bashls.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.clangd.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.jdtls.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.jsonls.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.pyright.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.rust_analyzer.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.tsserver.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.sumneko_lua.setup {
-    capabilities = capabilities,
-}
-
-require 'lspconfig'.sqlls.setup {
-    capabilities = capabilities,
-}
 
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_us' }

@@ -11,7 +11,6 @@ exec 'source $HOME/.config/nvim/plugin/plugConfig.vim'
 exec 'source $HOME/.config/nvim/plugin/floaterm-vim.vim'
 lua require("plugins")
 lua require("lsp")
-
 lua require("surface")
 
 lua require("nvim-treesitter-config")
@@ -38,4 +37,14 @@ func! InstallRely()
     exec '!pip install autopep8 -y'
     exec '!pip install pynvim -y'
     exec 'call TeleRely()'
+endfunc
+
+" 格式化代码
+nnoremap <silent><space>fc :call FormatCode()<CR>
+func! FormatCode()
+    exec "w"
+    if &filetype=='python'
+        exec ":Isort"
+        exec "!autopep8 --in-place --aggressive --aggressive %"
+    endif
 endfunc

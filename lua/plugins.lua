@@ -9,11 +9,10 @@ packer.startup({
             "LintaoAmons/scratch.nvim",
             tag = "v0.2.0" -- use tag for stability, or without this to have latest fixed and functions
         }
+        use 'adelarsq/image_preview.nvim'
         use 'mfussenegger/nvim-dap'
         use 'ravenxrz/DAPInstall.nvim'
         use 'rcarriga/nvim-dap-ui'         --左边
-
-        use 'adelarsq/image_preview.nvim'
         use 'theHamsta/nvim-dap-virtual-text'
         use 'voldikss/vim-floaterm'
         use {
@@ -30,8 +29,6 @@ packer.startup({
             'nvim-telescope/telescope.nvim', tag= '0.1.0',
             --依赖 apt install ripgrep
         }
-        use 'nvim-lua/popup.nvim'
-        use 'nvim-lua/plenary.nvim'
         use 'neovim/nvim-lspconfig'
         use 'williamboman/nvim-lsp-installer'
         use 'hrsh7th/nvim-cmp'
@@ -41,9 +38,13 @@ packer.startup({
         use 'hrsh7th/cmp-path'
 
         use 'f3fora/cmp-spell'
+        use {
+            "L3MON4D3/LuaSnip",
+            tag = "v<CurrentMajor>.*"
+        }
         use 'rafamadriz/friendly-snippets'
         -- use 'hrsh7th/cmp-vsnip'
-        use 'hrsh7th/vim-vsnip'
+        -- use 'hrsh7th/vim-vsnip'
         -- use {
         --     'neoclide/coc.nvim',
         --     branch = 'release'
@@ -58,11 +59,10 @@ packer.startup({
             'nvim-treesitter/nvim-treesitter',
             run=':TSUpdate'
         }
-        use "nvim-zh/colorful-winsep.nvim"
         use 'itchyny/vim-cursorword'
-        use 'lukas-reineke/indent-blankline.nvim'
         use 'glepnir/dashboard-nvim'
-        use 'voldikss/vim-translator'
+        use 'nvim-lua/popup.nvim'
+        use 'nvim-lua/plenary.nvim'
         use {
             'EdenEast/nightfox.nvim',
             run=':NightfoxCompile',
@@ -71,6 +71,8 @@ packer.startup({
         use 'xiyaowong/nvim-transparent'
         use 'tpope/vim-commentary'     --快速注释
         use 'tpope/vim-surround'
+        use 'lukas-reineke/indent-blankline.nvim'
+        use 'voldikss/vim-translator'
         use 'wbthomason/packer.nvim'
     end,
     config={
