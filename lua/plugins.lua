@@ -31,17 +31,14 @@ packer.startup({
         }
         use 'neovim/nvim-lspconfig'
         use 'williamboman/nvim-lsp-installer'
+        use 'hrsh7th/cmp-nvim-lsp'
         use 'hrsh7th/nvim-cmp'
         use 'hrsh7th/cmp-cmdline'
-        use 'hrsh7th/cmp-nvim-lsp'
         use 'hrsh7th/cmp-buffer'
         use 'hrsh7th/cmp-path'
 
         use 'f3fora/cmp-spell'
-        use {
-            "L3MON4D3/LuaSnip",
-            tag = "v<CurrentMajor>.*"
-        }
+        use 'L3MON4D3/LuaSnip'
         use 'rafamadriz/friendly-snippets'
         -- use 'hrsh7th/cmp-vsnip'
         -- use 'hrsh7th/vim-vsnip'
@@ -69,7 +66,7 @@ packer.startup({
         }
         use 'folke/tokyonight.nvim'
         use 'xiyaowong/nvim-transparent'
-        use 'tpope/vim-commentary'     --快速注释
+        use 'numToStr/Comment.nvim'
         use 'tpope/vim-surround'
         use 'lukas-reineke/indent-blankline.nvim'
         use 'voldikss/vim-translator'
@@ -97,11 +94,11 @@ packer.startup({
 
 --自动安装插件
 pcall(
-    vim.cmd,
-    [[
-    augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup END
-  ]]
+vim.cmd,
+[[
+augroup packer_user_config
+autocmd!
+autocmd BufWritePost plugins.lua source <afile> | PackerSync
+augroup END
+]]
 )

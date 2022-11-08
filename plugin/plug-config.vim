@@ -1,4 +1,3 @@
-
 " 自动导入包ALT enter
 nmap<silent> <M-CR>   :ImportSymbol<CR>
 imap <silent> <M-CR>   <Esc>:ImportSymbol<CR>a
