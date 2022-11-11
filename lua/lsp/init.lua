@@ -32,11 +32,11 @@ require 'lspconfig'.jsonls.setup {
     flags = lsp.lsp_flags,
 }
 
--- require 'lspconfig'.pyright.setup {
---     capabilities = capabilities,
---     on_attach = lsp.on_attach,
---     flags = lsp.lsp_flags,
--- }
+require 'lspconfig'.pyright.setup {
+    capabilities = capabilities,
+    on_attach = lsp.on_attach,
+    flags = lsp.lsp_flags,
+}
 
 require 'lspconfig'.pylsp.setup {
     capabilities = capabilities,
