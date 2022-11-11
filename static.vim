@@ -130,6 +130,8 @@ set fileencoding=utf-8                                "保存时的文件编码
 set termencoding=utf-8                                "终端输出的字符编码
 set encoding=utf-8                                    "VIM打开文件用的内部编码
 scriptencoding utf-8
+set fileformat=unix      " 设定文件格式为unix
+set fileformats=unix,dos,mac        " 识别文件格式
 
 " 状态栏
 function! GitBranch()
@@ -183,48 +185,6 @@ hi User5 guifg=green
 " 映射按键
 nnoremap Y y$
 nnoremap <leader>w :w<CR>
-
-" 补全括号
-inoremap ( ()<esc>i
-inoremap [ []<esc>i
-" if &filetype=='python'
-    inoremap { {}<esc>i
-" endif
-inoremap ' ''<esc>i
-inoremap " ""<esc>i
-" 全角转半角
-" inoremap ｀ `
-" inoremap ～ ~
-" inoremap ！ !
-" inoremap ＠ @
-" inoremap ＃ #
-" inoremap ＄ $
-" inoremap ％ %
-" inoremap ＾ ^
-" inoremap ＆ &
-" inoremap ＊ *
-" inoremap （ (
-" inoremap ） )
-" inoremap － -
-" inoremap ＿ _
-" inoremap ＝ =
-" inoremap ＋ +
-" inoremap ［ [
-" inoremap ｛ {
-" inoremap ］ ]
-" inoremap ｝ }
-" inoremap ＼ \
-" inoremap ｜ |
-" inoremap ； ;
-" inoremap ： :
-" inoremap ＇ '
-"" inoremap ＂ "
-" inoremap ， ,
-" inoremap ＜ <
-" inoremap ． .
-" inoremap ＞ >
-" inoremap ／ /
-" inoremap ？ ?
 
 function! CheckChineseMark()
     "依次检查
@@ -322,6 +282,7 @@ function! CheckChineseMark()
 endfunction
 " unmap <C-S>
 nnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
+vnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
 
 " 创建tab
 nnoremap <leader>tn :tabnew<CR>

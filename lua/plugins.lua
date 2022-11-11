@@ -1,6 +1,7 @@
 local packer=require("packer")
 packer.startup({
     function(use)
+        use 'steelsojka/pears.nvim'
         use {
             'stevearc/aerial.nvim',
             config = function() require('aerial').setup() end
@@ -49,14 +50,19 @@ packer.startup({
         use 'wookayin/vim-autoimport'     --导入包
         use 'lfv89/vim-interestingwords'
         use {
-            'fisadev/vim-isort',
-            ft={'python'}
+            'stsewd/isort.nvim',
+            run=':UpdateRemotePlugins',
         }
+        -- use {
+        --     'fisadev/vim-isort',
+        --     ft={'python'}
+        -- }
+        use 'p00f/nvim-ts-rainbow'
         use {
             'nvim-treesitter/nvim-treesitter',
             run=':TSUpdate'
         }
-        use 'itchyny/vim-cursorword'
+        -- use 'itchyny/vim-cursorword'
         use 'glepnir/dashboard-nvim'
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'

@@ -140,6 +140,11 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
+  ["isort.nvim"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/isort.nvim",
+    url = "https://github.com/stsewd/isort.nvim"
+  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -190,6 +195,11 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-ts-rainbow"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    url = "https://github.com/p00f/nvim-ts-rainbow"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -199,6 +209,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["pears.nvim"] = {
+    loaded = true,
+    path = "/root/.local/share/nvim/site/pack/packer/start/pears.nvim",
+    url = "https://github.com/steelsojka/pears.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
@@ -245,11 +260,6 @@ _G.packer_plugins = {
     path = "/root/.local/share/nvim/site/pack/packer/start/vim-autoimport",
     url = "https://github.com/wookayin/vim-autoimport"
   },
-  ["vim-cursorword"] = {
-    loaded = true,
-    path = "/root/.local/share/nvim/site/pack/packer/start/vim-cursorword",
-    url = "https://github.com/itchyny/vim-cursorword"
-  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/vim-floaterm",
@@ -259,13 +269,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/root/.local/share/nvim/site/pack/packer/start/vim-interestingwords",
     url = "https://github.com/lfv89/vim-interestingwords"
-  },
-  ["vim-isort"] = {
-    loaded = false,
-    needs_bufread = true,
-    only_cond = false,
-    path = "/root/.local/share/nvim/site/pack/packer/opt/vim-isort",
-    url = "https://github.com/fisadev/vim-isort"
   },
   ["vim-surround"] = {
     loaded = true,
@@ -284,13 +287,6 @@ time([[Defining packer_plugins]], false)
 time([[Config for aerial.nvim]], true)
 try_loadstring("\27LJ\2\0024\0\0\2\0\3\0\0066\0\0\0'\1\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\vaerial\frequire\0", "config", "aerial.nvim")
 time([[Config for aerial.nvim]], false)
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Filetype lazy-loads
-time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType python ++once lua require("packer.load")({'vim-isort'}, { ft = "python" }, _G.packer_plugins)]]
-time([[Defining lazy-load filetype autocommands]], false)
-vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

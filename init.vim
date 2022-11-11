@@ -31,18 +31,20 @@ autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()
 nnoremap <F3> :call InstallRely()<CR>
 func! InstallRely()
     exec '!pip install autopep8 -y'
+    exec '!pip install isort -y'
     exec '!pip install pynvim -y'
     exec 'call TeleRely()'
+    exec 'PackerSync'
     " exec 'call NvimSet()'
     " exec 'call CocInstal()'
 endfunc
 
 " 格式化代码
-nnoremap <silent><space>fc :call FormatCode()<CR>
-func! FormatCode()
-    exec "w"
-    if &filetype=='python'
-        exec ":Isort"
-        exec "!autopep8 --in-place --aggressive --aggressive %"
-    endif
-endfunc
+" nnoremap <silent><leader>fc :call FormatCode()<CR>
+" func! FormatCode()
+"     exec "w"
+"     if &filetype=='python'
+"         exec ":Isort"
+"         exec "!autopep8 --in-place --aggressive --aggressive %"
+"     endif
+" endfunc

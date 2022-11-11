@@ -1,4 +1,4 @@
-M={}
+M = {}
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
@@ -30,8 +30,32 @@ M.on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<space>fc', function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set('n', '<space>fc',
+        function()
+            vim.lsp.buf.format
+            { async = true }
+            pcall(
+                vim.cmd,
+                [[
+        if &filetype=='python'
+            exec ':Isort'
+            endif
+            ]]
+            )
+        end, bufopts)
 end
+
+pcall(
+    vim.cmd,
+    [[
+    set updatetime=100
+    augroup highlight
+    autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+    autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    ]]
+)
 
 M.lsp_flags = {
     -- This is the default in Nvim 0.7+
