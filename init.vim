@@ -5,8 +5,7 @@ function! InitFunc()
                     \ ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
         autocmd VimEnter * PackerSync
         autocmd VimEnter * source $MYVIMRC
-        exec '!pip install autopep8 -y'
-        exec '!pip install pynvim -y'
+        exec ':call InstallRely()'
     endif
 endfunction
 
@@ -14,11 +13,25 @@ exec 'source $HOME/.config/nvim/static.vim'
 " 加载插件
 exec 'source $HOME/.config/nvim/plugin/plug-config.vim'
 exec 'source $HOME/.config/nvim/plugin/floaterm-vim.vim'
+" 换coc再开启
 " exec 'source $HOME/.config/nvim/plugin/coc_nvim.vim'
 lua require("plugins")
 lua require("lsp")
 lua require("surface")
 lua require("inits")
+
+" 安装依赖
+nnoremap <F3> :call InstallRely()<CR>
+func! InstallRely()
+    " exec '!pip install autopep8'
+    exec '!pip install black'
+    exec '!pip install isort'
+    exec '!pip install pynvim'
+    exec 'call TeleRely()'
+    exec 'PackerSync'
+    " exec 'call NvimSet()'
+    " exec 'call CocInstal()'
+endfunc
 
 " 代码折叠
 function FoldConfig()
@@ -26,25 +39,3 @@ function FoldConfig()
     set foldexpr=nvim_treesitter#foldexpr()
 endfunction
 autocmd BufAdd,BufEnter,BufNew,BufNewFile,BufWinEnter * :call FoldConfig()
-
-" 安装依赖
-nnoremap <F3> :call InstallRely()<CR>
-func! InstallRely()
-    exec '!pip install autopep8 -y'
-    exec '!pip install isort -y'
-    exec '!pip install pynvim -y'
-    exec 'call TeleRely()'
-    exec 'PackerSync'
-    " exec 'call NvimSet()'
-    " exec 'call CocInstal()'
-endfunc
-
-" 格式化代码
-" nnoremap <silent><leader>fc :call FormatCode()<CR>
-" func! FormatCode()
-"     exec "w"
-"     if &filetype=='python'
-"         exec ":Isort"
-"         exec "!autopep8 --in-place --aggressive --aggressive %"
-"     endif
-" endfunc

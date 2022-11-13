@@ -44,13 +44,13 @@ M.on_attach = function(client, bufnr)
     pcall(vim.cmd, [[
  nnoremap <silent><space>fc :call FormatCode()<CR>
  func! FormatCode()
-     exec "w"
         if &filetype=='python'
             exec ':Isort'
-            exec ':Black()'
+            exec ':call Black()'
         else
             exec ':lua vim.lsp.buf.format()'
             endif
+     exec "w"
  endfunc
             ]])
 end

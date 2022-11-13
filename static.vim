@@ -3,7 +3,8 @@ func! NvimSet()
         if empty(glob('$HOME\\AppData\\Local\\nvim'))
             silent !git clone https://github.com/wbthomason/packer.nvim
                         \"$env:LOCALAPPDATA\\nvim-data\\site\\pack\\packer\\start\\packer.nvim"
-            autocmd VimEnter * PackerSync | source $MYVIMRC
+            autocmd source $MYVIMRC
+            autocmd VimEnter * PackerSync
         else
             exec 'PackerSync'
         endif
@@ -11,7 +12,8 @@ func! NvimSet()
         if !isdirectory(stdpath('data') . '/site/pack/packer/start/packer.nvim/')
             silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim
                         \~/.local/share/nvim/site/pack/packer/start/packer.nvim
-            autocmd VimEnter * PackerSync | source $MYVIMRC
+            autocmd source $MYVIMRC
+            autocmd VimEnter * PackerSync
         else
             exec 'PackerSync'
         endif
@@ -19,7 +21,8 @@ func! NvimSet()
         if empty(glob('~/.local/share/nvim/site/pack/packer/start/packer.nvim'))
             silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim
                             \~/.local/share/nvim/site/pack/packer/start/packer.nvim
-            autocmd VimEnter * PackerSync | source $MYVIMRC
+            autocmd source $MYVIMRC
+            autocmd VimEnter * PackerSync
         else
             exec 'PackerSync'
         endif
