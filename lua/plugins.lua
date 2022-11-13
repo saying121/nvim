@@ -53,6 +53,7 @@ packer.startup({
             'stsewd/isort.nvim',
             run=':UpdateRemotePlugins',
         }
+        use 'averms/black-nvim'
         -- use {
         --     'fisadev/vim-isort',
         --     ft={'python'}

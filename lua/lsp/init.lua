@@ -38,11 +38,11 @@ require 'lspconfig'.pyright.setup {
     flags = lsp.lsp_flags,
 }
 
-require 'lspconfig'.pylsp.setup {
-    capabilities = capabilities,
-    on_attach = lsp.on_attach,
-    flags = lsp.lsp_flags,
-}
+-- require 'lspconfig'.pylsp.setup {
+--     capabilities = capabilities,
+--     on_attach = lsp.on_attach,
+--     flags = lsp.lsp_flags,
+-- }
 
 require 'lspconfig'.rust_analyzer.setup {
     capabilities = capabilities,

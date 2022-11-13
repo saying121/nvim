@@ -191,7 +191,6 @@ set wrap
 " copy paste system clipboard
 nnoremap Y  "+y$
 
-nnoremap yy "+yy
 vnoremap yy "+yy
 
 nnoremap y  "+y
@@ -199,12 +198,14 @@ vnoremap y  "+y
 
 nnoremap d  "+d
 vnoremap d  "+d
+nnoremap dd "+dd
 
 nnoremap x  "+x
 vnoremap x  "+x
 
 nnoremap c  "+c
 vnoremap c  "+c
+nnoremap cc "+cc
 
 nnoremap p  "+p
 nnoremap P  "+P

@@ -41,19 +41,18 @@ M.on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<space>fc',
-        function()
-            vim.lsp.buf.format
-            { async = true }
-            pcall(
-                vim.cmd,
-                [[
+    pcall(vim.cmd, [[
+ nnoremap <silent><space>fc :call FormatCode()<CR>
+ func! FormatCode()
+     exec "w"
         if &filetype=='python'
             exec ':Isort'
+            exec ':Black()'
+        else
+            exec ':lua vim.lsp.buf.format()'
             endif
-            ]]
-            )
-        end, bufopts)
+ endfunc
+            ]])
 end
 
 pcall(
