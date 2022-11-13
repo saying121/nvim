@@ -183,16 +183,29 @@ hi User5 guifg=green
 " cterm：设置粗体，斜体，正体;ctermfg：前景色;ctermbg：背景色
 
 " 映射按键
-nnoremap Y y$
 nnoremap <leader>w :w<CR>
 nnoremap j gj
 nnoremap k gk
 set wrap
 
-" 复制粘贴
-" 复制粘贴到系统剪贴板
+" copy paste system clipboard
+nnoremap Y  "+y$
+
 nnoremap yy "+yy
+vnoremap yy "+yy
+
+nnoremap y  "+y
 vnoremap y  "+y
+
+nnoremap d  "+d
+vnoremap d  "+d
+
+nnoremap x  "+x
+vnoremap x  "+x
+
+nnoremap c  "+c
+vnoremap c  "+c
+
 nnoremap p  "+p
 nnoremap P  "+P
 
