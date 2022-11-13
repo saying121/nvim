@@ -61,9 +61,9 @@ augroup END
 " 自动创建代码块
 augroup views
     " autocmd!
-    autocmd BufWrite * mkview
+    " autocmd BufWrite * mkview
     " autocmd BufWinLeave * mkview
-    autocmd BufRead * silent loadview
+    " autocmd BufRead * silent loadview
 augroup END
 
 highlight Folded ctermbg=0    "折叠颜色设置ctermfg=169
@@ -185,6 +185,51 @@ hi User5 guifg=green
 " 映射按键
 nnoremap Y y$
 nnoremap <leader>w :w<CR>
+nnoremap j gj
+nnoremap k gk
+set wrap
+
+" 复制粘贴
+" 复制粘贴到系统剪贴板
+nnoremap yy "+yy
+vnoremap y  "+y
+nnoremap p  "+p
+nnoremap P  "+P
+
+" unmap <C-S>
+nnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
+vnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
+
+" 创建tab
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>tc :tabclose<CR>
+nnoremap <leader>to :tabonly<CR>
+
+" 切换buffer
+nnoremap ]b :bn<CR>
+nnoremap [b :bp<CR>
+nnoremap ]B :blast<CR>
+nnoremap [B :bfirst<CR>
+
+" 切换窗口
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+tnoremap <Esc> <C-\><C-n>
+
+" 调整窗口大小
+nnoremap <M-,> <C-W><
+nnoremap <M-.> <C-W>>
+nnoremap <M--> <C-W>-
+nnoremap <M-=> <C-W>+
+
+" Alt+t开启关闭终端,vim和nvim不太一样
+nnoremap <M-t> :ter<CR>A
+tnoremap <M-t> exit<CR>
+
+nnoremap <silent><BackSpace> :noh<CR>
+nnoremap <space>s :source $MYVIMRC<CR>
 
 function! CheckChineseMark()
     "依次检查
@@ -280,37 +325,3 @@ function! CheckChineseMark()
     endif
 
 endfunction
-" unmap <C-S>
-nnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
-vnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
-
-" 创建tab
-nnoremap <leader>tn :tabnew<CR>
-nnoremap <leader>tc :tabclose<CR>
-nnoremap <leader>to :tabonly<CR>
-
-" 切换buffer
-nnoremap ]b :bn<CR>
-nnoremap [b :bp<CR>
-nnoremap ]B :blast<CR>
-nnoremap [B :bfirst<CR>
-
-" 切换窗口
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-tnoremap <Esc> <C-\><C-n>
-
-" 调整窗口大小
-nnoremap <M-,> <C-W><
-nnoremap <M-.> <C-W>>
-nnoremap <M--> <C-W>-
-nnoremap <M-=> <C-W>+
-
-" Alt+t开启关闭终端,vim和nvim不太一样
-nnoremap <M-t> :ter<CR>A
-tnoremap <M-t> exit<CR>
-
-nnoremap <silent><BackSpace> :noh<CR>
-nnoremap <space>s :source $MYVIMRC<CR>

@@ -1,4 +1,13 @@
 M = {}
+local config = {
+    virtual_text = false,
+    signs = {
+        active = signs,
+    },
+    update_in_insert = true,
+    underling = true,
+}
+vim.diagnostic.config(config)
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
@@ -22,6 +31,8 @@ M.on_attach = function(client, bufnr)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', '<C-n>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<leader>g', vim.diagnostic.open_float, bufopts)
+    vim.keymap.set('n', '<leader>ll', vim.diagnostic.setloclist, bufopts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wl', function()
