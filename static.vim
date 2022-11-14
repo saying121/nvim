@@ -37,6 +37,12 @@ set undofile
 set history=100
 set mouse=a            "鼠标可用
 
+" 恢复光标位置
+autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
 " 显示设置
 set termguicolors
 set listchars=eol:
@@ -47,6 +53,11 @@ syntax enable        "语法高亮
 set hlsearch        "搜索结果高亮
 set incsearch        "搜索输入时动态高亮
 set showmatch        "高亮显示匹配括号
+
+" 当前行高亮
+set cursorline
+autocmd WinEnter,InsertLeave * set cursorline
+autocmd InsertEnter,WinLeave * set nocursorline
 
 " 写入自动删除行末空格
 augroup blank
@@ -192,26 +203,10 @@ nnoremap k gk
 set wrap
 
 " copy paste system clipboard
-nnoremap Y  "+y$
-
-vnoremap yy "+yy
-
-nnoremap y  "+y
-vnoremap y  "+y
-
-nnoremap d  "+d
-vnoremap d  "+d
-nnoremap dd "+dd
-
-nnoremap x  "+x
-vnoremap x  "+x
-
-nnoremap c  "+c
-vnoremap c  "+c
-nnoremap cc "+cc
-
-nnoremap p  "+p
-nnoremap P  "+P
+" ^= 把值加到默认值前
+" set clipboard^=unnamedplus
+set clipboard^=unnamed
+nnoremap Y  y$
 
 " unmap <C-S>
 nnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
