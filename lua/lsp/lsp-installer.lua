@@ -2,7 +2,7 @@ require("nvim-lsp-installer").setup({
     automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
     -- A list of servers to automatically install if they're not already installed. Example: { "rust_analyzer", "sumneko_lua" }
     -- This setting has no relation with the `automatic_installation` setting.
-    ensure_installed = { "bashls", "jdtls", "jsonls", "pyright", "sqlls", "sumneko_lua","vimls" },
+    ensure_installed = { "bashls", "jdtls", "jsonls", "pyright", "sqlls", "sumneko_lua", "vimls" },
 
     -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed.
     -- This setting has no relation with the `ensure_installed` setting.
@@ -54,7 +54,7 @@ require("nvim-lsp-installer").setup({
         -- and is not recommended.
         --
         -- Example: { "--proxy", "https://proxyserver" }
-        install_args = {},
+        install_args = { "black", "pynvim" },
     },
 
     -- Controls to which degree logs are written to the log file. It's useful to set this to vim.log.levels.DEBUG when
