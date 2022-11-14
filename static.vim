@@ -63,22 +63,16 @@ autocmd InsertEnter,WinLeave * set nocursorline
 augroup blank
     autocmd!
     autocmd BufWrite * :%s/\s\+$//e
-    " autocmd BufWrite *.c    :%s/\s\+$//e
-    " autocmd BufWrite *.cpp  :%s/\s\+$//e
-    " autocmd BufWrite *.java :%s/\s\+$//e
-    " autocmd BufWrite *.py   :%s/\s\+$//e
-    " autocmd BufWrite *.sh   :%s/\s\+$//e
     " autocmd BufWrite *.vim  :%s/\s\+$//e
-    " autocmd BufWrite *.lua  :%s/\s\+$//e
 augroup END
 
 " 自动创建代码块
-augroup views
+" augroup views
     " autocmd!
     " autocmd BufWrite * mkview
     " autocmd BufWinLeave * mkview
     " autocmd BufRead * silent loadview
-augroup END
+" augroup END
 
 highlight Folded ctermbg=0    "折叠颜色设置ctermfg=169
 highlight foldcolumn ctermbg=0
@@ -208,10 +202,6 @@ set wrap
 set clipboard^=unnamed
 nnoremap Y  y$
 
-" unmap <C-S>
-nnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
-vnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
-
 " 创建tab
 nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tc :tabclose<CR>
@@ -337,3 +327,7 @@ function! CheckChineseMark()
     endif
 
 endfunction
+
+" unmap <C-S>
+nnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
+vnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
