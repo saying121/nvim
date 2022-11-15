@@ -54,7 +54,7 @@ require("nvim-lsp-installer").setup({
         -- and is not recommended.
         --
         -- Example: { "--proxy", "https://proxyserver" }
-        install_args = { "black", "pynvim" },
+        install_args = { "black", "pynvim", "isort" },
     },
 
     -- Controls to which degree logs are written to the log file. It's useful to set this to vim.log.levels.DEBUG when

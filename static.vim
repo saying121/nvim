@@ -199,7 +199,11 @@ set wrap
 " copy paste system clipboard
 " ^= 把值加到默认值前
 " set clipboard^=unnamedplus
-set clipboard^=unnamed
+" "*和"+有什么差别呢？
+"* 是在系统剪切板中表示选择的内容
+"+ 是在系统剪切板中表示选择后Ctrl+c复制的内容
+set clipboard^=unnamed          " *寄存器
+" set clipboard^=unnamedplus          " +寄存器
 nnoremap Y  y$
 
 " 创建tab

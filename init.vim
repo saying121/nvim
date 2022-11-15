@@ -3,9 +3,11 @@ function! InitFunc()
     if !isdirectory(stdpath('data') . '/site/pack/packer/start/packer.nvim/')
         execute '!git clone --depth 1 https://github.com/wbthomason/packer.nvim
                     \ ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
+        autocmd VimEnter * source $MYVIMRC
         autocmd VimEnter * PackerSync
         autocmd VimEnter * source $MYVIMRC
         exec ':call InstallRely()'
+        autocmd VimEnter * source $MYVIMRC
     endif
 endfunction
 
@@ -23,10 +25,9 @@ lua require("inits")
 " 安装依赖
 nnoremap <F3> :call InstallRely()<CR>
 func! InstallRely()
-    " exec '!pip install autopep8'
-    exec '!pip install black'
-    exec '!pip install isort'
-    exec '!pip install pynvim'
+    " exec '!pip install black'
+    " exec '!pip install isort'
+    " exec '!pip install pynvim'
     exec 'call TeleRely()'
     exec 'PackerSync'
     " exec 'call NvimSet()'
