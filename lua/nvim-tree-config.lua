@@ -22,13 +22,11 @@ require("nvim-tree").setup({
     filters = {
         dotfiles = true,
     },
+    trash = {
+        cmd = "trash-put",
+        require_confirm = true,
+    },
 })
-
-pcall(
-vim.cmd,
-[[
-]]
-)
 
 -- nnoremap <leader>e :NvimTreeToggle<CR>
 vim.api.nvim_set_keymap(
