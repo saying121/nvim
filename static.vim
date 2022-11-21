@@ -1,34 +1,3 @@
-func! NvimSet()
-    if(has("win32") || has("win64") || has("win95") || has("win16"))
-        if empty(glob('$HOME\\AppData\\Local\\nvim'))
-            silent !git clone https://github.com/wbthomason/packer.nvim
-                        \"$env:LOCALAPPDATA\\nvim-data\\site\\pack\\packer\\start\\packer.nvim"
-            autocmd source $MYVIMRC
-            autocmd VimEnter * PackerSync
-        else
-            exec 'PackerSync'
-        endif
-    elseif has('unix')
-        if !isdirectory(stdpath('data') . '/site/pack/packer/start/packer.nvim/')
-            silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim
-                        \~/.local/share/nvim/site/pack/packer/start/packer.nvim
-            autocmd source $MYVIMRC
-            autocmd VimEnter * PackerSync
-        else
-            exec 'PackerSync'
-        endif
-    elseif has('mac')
-        if empty(glob('~/.local/share/nvim/site/pack/packer/start/packer.nvim'))
-            silent !git clone --depth 1 https://github.com/wbthomason/packer.nvim
-                            \~/.local/share/nvim/site/pack/packer/start/packer.nvim
-            autocmd source $MYVIMRC
-            autocmd VimEnter * PackerSync
-        else
-            exec 'PackerSync'
-        endif
-    endif
-endfunc
-
 " 基本设置
 " 出现CONVERSION ERROR就输入指令:w ++enc=utf-8 强制转码
 let mapleader=";"
@@ -145,10 +114,12 @@ set fileformats=unix,dos,mac        " 识别文件格式
 function! GitBranch()
     return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
+
 function! StatuslineGit()
     let l:branchname = GitBranch()
     return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
 endfunction
+
 " set statusline=%<%F%=%y%m%r%h%w%{&ff}\[%{&fenc}]0x%02B@%040h#%n\(%3l/%3L,%3c\|%3v\)%3p%%
 set laststatus=2                            "显示状态栏信息
 set statusline=%6*\%{StatuslineGit()}\
@@ -198,8 +169,7 @@ set wrap
 
 " copy paste system clipboard
 " ^= 把值加到默认值前
-" set clipboard^=unnamedplus
-" "*和"+有什么差别呢？
+"*和"+有什么差别呢？
 "* 是在系统剪切板中表示选择的内容
 "+ 是在系统剪切板中表示选择后Ctrl+c复制的内容
 set clipboard^=unnamed          " *寄存器
@@ -218,10 +188,10 @@ nnoremap ]B :blast<CR>
 nnoremap [B :bfirst<CR>
 
 " 切换窗口
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
 tnoremap <Esc> <C-\><C-n>
 
 " 调整窗口大小
@@ -231,7 +201,7 @@ nnoremap <M--> <C-W>-
 nnoremap <M-=> <C-W>+
 
 " Alt+t开启关闭终端,vim和nvim不太一样
-nnoremap <M-t> :ter<CR>A
+nnoremap <M-t> :terminal<CR>A
 tnoremap <M-t> exit<CR>
 
 nnoremap <silent><BackSpace> :noh<CR>
@@ -332,6 +302,5 @@ function! CheckChineseMark()
 
 endfunction
 
-" unmap <C-S>
 nnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>
 vnoremap <silent><leader>s :call CheckChineseMark()<CR>:w<CR>

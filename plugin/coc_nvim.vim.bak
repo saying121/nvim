@@ -1,6 +1,6 @@
 func! CocInstal()
-    exec '!apt install -y nodejs clangd'
-    exec '!npm install npm -g -y'
+    exec 'term sudo apt install -y nodejs clangd'
+    exec 'term sudo npm install npm -g -y'
     " exec '!npm install -g -y yarn'
     " exec '!cd $HOME/.local/share/nvim/site/pack/packer/start/coc.nvim && yarn install '
 endfunc

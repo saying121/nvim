@@ -4,7 +4,7 @@ imap <silent> <M-CR>   <Esc>:ImportSymbol<CR>a
 
 " Telescope
 func! TeleRely()
-    exec '!apt install ripgrep -y'
+    exec 'term sudo apt install ripgrep -y'
 endfunc
 
 " translator
