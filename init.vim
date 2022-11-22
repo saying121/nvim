@@ -8,6 +8,7 @@ function! InitFunc()
     endif
 endfunction
 
+" 安装packer
 func! ClonePacker()
     execute '!git clone --depth 1 https://github.com/wbthomason/packer.nvim
                 \ ~/.local/share/nvim/site/pack/packer/start/packer.nvim'
@@ -31,15 +32,17 @@ func! NvimSet()
         endif
     endif
 endfunc
-
+" ***********************************************************
 " 基础配置
-source $HOME/.config/nvim/static.vim
+source $HOME/.config/nvim/viml/init.vim
 " 加载插件
 source ~/.config/nvim/plugin/init.vim
-lua require("inits")
+
+lua require("init")
+" ***********************************************************
 
 " 安装依赖
-nnoremap <F3> :call InstallRely()<CR>
+nnoremap <F2> :call InstallRely()<CR>
 func! InstallRely()
     exec '!pip install black isort pynvim '
     exec 'call TeleRely()'

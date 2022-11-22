@@ -11,7 +11,7 @@ require('telescope').load_extension('projects')
 
 vim.api.nvim_set_keymap(
     "n",
-    "<space-p>",
+    "<space>p",
     ":lua require'telescope'.extensions.projects.projects{}<CR>",
     { silent = true, noremap = true }
 )
