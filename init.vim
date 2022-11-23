@@ -45,8 +45,12 @@ lua require("init")
 nnoremap <F2> :call InstallRely()<CR>
 func! InstallRely()
     exec '!pip install black isort pynvim '
-    exec 'call TeleRely()'
     exec 'PackerSync'
+    exec 'term sudo apt install -y
+                \ ripgrep
+                \ nodejs
+                \ npm'
+    exec '!sudo npm install -g pyright'
     " exec 'call NvimSet()'
     " exec 'call CocInstal()'
 endfunc

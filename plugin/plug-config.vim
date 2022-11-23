@@ -2,16 +2,11 @@
 nmap<silent> <M-CR>   :ImportSymbol<CR>
 imap <silent> <M-CR>   <Esc>:ImportSymbol<CR>a
 
-" Telescope
-func! TeleRely()
-    exec 'term sudo apt install ripgrep -y'
-endfunc
-
 " translator
 nnoremap <M-y> <Plug>TranslateW
 vnoremap <M-y> <Plug>TranslateWV
 " Available: 'bing', 'google', 'haici', 'iciba'(expired), 'sdcv', 'trans', 'youdao'
-let g:translator_default_engines=['bing','haici']
+let g:translator_default_engines=['google','haici']
 " """ Configuration example
 " " Echo translation in the cmdline
 " nmap <silent> <Leader>t <Plug>Translate

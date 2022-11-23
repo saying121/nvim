@@ -313,10 +313,10 @@ time([[Config for aerial.nvim]], false)
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]
 vim.cmd [[ packadd cmp-path ]]
-vim.cmd [[ packadd cmp-spell ]]
 vim.cmd [[ packadd cmp-buffer ]]
 vim.cmd [[ packadd LuaSnip ]]
 vim.cmd [[ packadd friendly-snippets ]]
+vim.cmd [[ packadd cmp-spell ]]
 vim.cmd [[ packadd cmp-cmdline ]]
 time([[Sequenced loading]], false)
 

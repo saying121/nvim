@@ -1,9 +1,9 @@
 M = {}
 local config = {
     virtual_text = false,
-    signs = {
-        active = signs,
-    },
+    -- signs = {
+    --     active = signs,
+    -- },
     update_in_insert = true,
     underling = true,
 }
