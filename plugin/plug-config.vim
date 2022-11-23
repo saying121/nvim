@@ -1,6 +1,8 @@
 " 自动导入包ALT enter
 nmap<silent> <M-CR>   :ImportSymbol<CR>
 imap <silent> <M-CR>   <Esc>:ImportSymbol<CR>a
+" 格式化shell
+let g:shfmt_fmt_on_save = 1
 
 " translator
 nnoremap <M-y> <Plug>TranslateW

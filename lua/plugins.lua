@@ -31,7 +31,10 @@ packer.startup({
             --依赖 apt install ripgrep
         }
         use 'neovim/nvim-lspconfig'
-        use 'williamboman/nvim-lsp-installer'
+        use {
+            'williamboman/mason.nvim',
+            "williamboman/mason-lspconfig.nvim",
+        }
         use 'hrsh7th/cmp-nvim-lsp'
         use 'hrsh7th/nvim-cmp'
         use {
@@ -64,8 +67,11 @@ packer.startup({
         --     'neoclide/coc.nvim',
         --     branch = 'release'
         -- }
+        use {
+            'z0mbix/vim-shfmt',
+            ft = 'sh'
+        }
         use 'wookayin/vim-autoimport' --导入包
-        use 'lfv89/vim-interestingwords'
         use {
             'stsewd/isort.nvim',
             run = ':UpdateRemotePlugins',
@@ -83,6 +89,7 @@ packer.startup({
         -- use 'itchyny/vim-cursorword'
         use 'glepnir/dashboard-nvim'
         use 'nvim-lua/popup.nvim'
+        use 'lfv89/vim-interestingwords'
         use 'nvim-lua/plenary.nvim'
         use {
             'EdenEast/nightfox.nvim',
@@ -132,15 +139,12 @@ packer.startup({
 })
 
 --自动安装插件
-pcall(
-    vim.cmd,
-    [[
-augroup packer_user_config
-autocmd!
-autocmd BufWritePost plugins.lua source <afile> | PackerSync
-augroup END
-]]
-)
+pcall(vim.cmd, [[
+    augroup packer_user_config
+        autocmd!
+        autocmd BufWritePost plugins.lua source <afile> | PackerSync
+    augroup END
+]])
 
 --[[ use {
   'myusername/example',        -- The plugin location string

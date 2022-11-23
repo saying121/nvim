@@ -167,6 +167,16 @@ _G.packer_plugins = {
     path = "/home/saying/.local/share/nvim/site/pack/packer/start/isort.nvim",
     url = "https://github.com/stsewd/isort.nvim"
   },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/saying/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/saying/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/saying/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
@@ -191,11 +201,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/saying/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text",
     url = "https://github.com/theHamsta/nvim-dap-virtual-text"
-  },
-  ["nvim-lsp-installer"] = {
-    loaded = true,
-    path = "/home/saying/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -292,6 +297,13 @@ _G.packer_plugins = {
     path = "/home/saying/.local/share/nvim/site/pack/packer/start/vim-interestingwords",
     url = "https://github.com/lfv89/vim-interestingwords"
   },
+  ["vim-shfmt"] = {
+    loaded = false,
+    needs_bufread = false,
+    only_cond = false,
+    path = "/home/saying/.local/share/nvim/site/pack/packer/opt/vim-shfmt",
+    url = "https://github.com/z0mbix/vim-shfmt"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/saying/.local/share/nvim/site/pack/packer/start/vim-surround",
@@ -312,13 +324,20 @@ time([[Config for aerial.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]
+vim.cmd [[ packadd cmp-path ]]
+vim.cmd [[ packadd cmp-buffer ]]
 vim.cmd [[ packadd LuaSnip ]]
 vim.cmd [[ packadd friendly-snippets ]]
-vim.cmd [[ packadd cmp-buffer ]]
 vim.cmd [[ packadd cmp-spell ]]
 vim.cmd [[ packadd cmp-cmdline ]]
-vim.cmd [[ packadd cmp-path ]]
 time([[Sequenced loading]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType sh ++once lua require("packer.load")({'vim-shfmt'}, { ft = "sh" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
