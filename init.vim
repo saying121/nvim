@@ -50,7 +50,7 @@ func! InstallRely()
                 \ ripgrep
                 \ nodejs
                 \ npm'
-    exec '!sudo npm install -g pyright'
+    exec '!sudo npm install -g bash-language-server pyright'
     " exec 'call NvimSet()'
     " exec 'call CocInstal()'
 endfunc
