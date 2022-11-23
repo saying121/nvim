@@ -67,11 +67,16 @@ end
 pcall(
     vim.cmd,
     [[
-    set updatetime=100
     augroup highlight
+        autocmd!
         autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+    augroup format
+        autocmd!
+        autocmd BufLeave,BufWinLeave,WinClosed,TabClosed,TabLeave,WinLeave * lua vim.lsp.buf.format()
+        autocmd BufLeave,BufWinLeave,WinClosed,TabClosed,TabLeave,WinLeave * w
     augroup END
     ]]
 )

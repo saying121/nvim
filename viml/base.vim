@@ -26,8 +26,20 @@ set showmatch        " 高亮显示匹配括号
 
 " 当前行高亮
 set cursorline
-autocmd WinEnter,InsertLeave * set cursorline
-autocmd InsertEnter,WinLeave * set nocursorline
+augroup CursorLine
+    autocmd!
+    autocmd WinEnter,InsertLeave * set cursorline
+    autocmd InsertEnter,WinLeave * set nocursorline
+augroup END
+
+" 恢复光标位置
+augroup RecoverCursor
+    autocmd!
+    autocmd BufReadPost *
+                \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+augroup END
 
 " 写入自动删除行末空格
 augroup blank
@@ -38,10 +50,10 @@ augroup END
 
 " 自动创建代码块
 " augroup views
-" autocmd!
-" autocmd BufWrite * mkview
-" autocmd BufWinLeave * mkview
-" autocmd BufRead * silent loadview
+"     autocmd!
+"     autocmd BufWrite * mkview
+"     autocmd BufWinLeave * mkview
+"     autocmd BufRead * silent loadview
 " augroup END
 
 highlight Folded ctermbg=0    " 折叠颜色设置ctermfg=169
@@ -61,18 +73,13 @@ set softtabstop=4    " 将连续数量的空格视作一个tab,可以一次删�
 " set noexpandtab        " 不要用空格符代表制表符
 
 " 临时文件
+set updatetime=100
 set writebackup    " 编辑时备份文件
 set backup        " 备份文件
-set backupdir=~/.config/nvim/backdir     " 设置备份文件目录
+set backupdir=~/.config/nvim/backupdir     " 设置备份文件目录
 
 set swapfile        " 创建临时交换文件
 set updatecount=100 " 交换文件刷新方式,400字/updatetime=time
 
 set undofile        " 撤销文件
 set undodir=~/.config/nvim/undodir  " 指定撤销文件目录
-
-" 恢复光标位置
-autocmd BufReadPost *
-            \ if line("'\"") > 1 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
