@@ -49,9 +49,9 @@ func! InstallRely()
     exec 'term sudo apt install -y
                 \ ripgrep
                 \ nodejs
-                \ npm
-                \ shfmt'
-    exec 'term sudo npm install -g bash-language-server pyright'
+                \ npm'
+                " \ shfmt'
+    " exec 'term sudo npm install -g bash-language-server pyright'
     " exec 'call NvimSet()'
     " exec 'call CocInstal()'
 endfunc

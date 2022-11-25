@@ -56,15 +56,26 @@ M.on_attach = function(client, bufnr)
     if &filetype=='python'
         exec ':Isort'
         exec ':call Black()'
+    elseif &filetype=='sh'
+        exec ':Shfmt'
     else
         exec ':lua vim.lsp.buf.format()'
     endif
     exec "w"
     endfunc
-    augroup format
-        autocmd!
-        autocmd BufWritePost * call FormatCode()
-    augroup END
+
+    "augroup format
+    "    autocmd!
+    "    autocmd BurWritePre
+    "    \ *.c,
+    "    \*.cpp,
+    "    \*.java,
+    "    \*.lua
+    "    \*.py,
+    "    \*.sh,
+    "    \*.vim,
+    "    \ call FormatCode()
+    "augroup END
 ]]   )
 
     if client.server_capabilities.document_highlight then

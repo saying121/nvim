@@ -63,7 +63,7 @@ require 'lspconfig'.sumneko_lua.setup {
     flags = lsp.lsp_flags,
 }
 
-require 'lspconfig'.sqlls.setup {
+require 'lspconfig'.sqls.setup {
     capabilities = capabilities,
     on_attach = lsp.on_attach,
     flags = lsp.lsp_flags,

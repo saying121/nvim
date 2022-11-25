@@ -1,5 +1,5 @@
 " F4编译运行
-nnoremap <F4> :call CompileRunGcc()<CR>
+nnoremap <silent><F4> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
     exec "w"
     if &filetype=='c'
@@ -33,7 +33,7 @@ func! CompileRunGcc()
 endfunc
 
 " F3编译
-nnoremap <F3> :call CompileGcc()<CR>
+nnoremap <silent><F3> :call CompileGcc()<CR>
 func! CompileGcc()
     exec "w"
     if &filetype=='c'
